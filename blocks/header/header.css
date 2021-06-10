@@ -1,3 +1,6 @@
 .header {
-
+  min-height: 74px;
+  background-color: black;
+  border-bottom: 1px solid #545454;
+  width: calc(100% - (200px * 2));
 }
