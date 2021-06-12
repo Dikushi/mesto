@@ -1,0 +1,6 @@
+.elements__info {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+}

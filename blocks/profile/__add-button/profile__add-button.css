@@ -2,10 +2,11 @@
   width: 150px;
   height: 50px;
   align-self: center;
-  margin-right: 0;
-  border: white 1.5px solid;
+  border: white 2px solid;
   box-sizing: border-box;
-  background-image: url(/images/add.svg);
+  background-image: url(../../../images/add.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-color: black;
+  padding: 0;
 }
