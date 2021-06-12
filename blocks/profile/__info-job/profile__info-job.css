@@ -1,6 +1,10 @@
 .profile__info-job {
   font-size: 18px;
   line-height: 22px;
+  font-weight: 400;
   margin: 0;
   padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

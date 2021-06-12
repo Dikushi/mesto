@@ -4,9 +4,10 @@
   height: 24px;
   border: solid 1px white;
   margin-right: auto;
-  margin-left: 18px;
-  margin-top: 31px;
-  background-image: url(/images/edit.svg);
+  background-image: url(../../../images/edit.svg);
   background-repeat: no-repeat;
   background-position: center;
+  align-self: baseline;
+  background-color: black;
+  padding: 0;
 }
