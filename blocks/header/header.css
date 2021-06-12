@@ -3,4 +3,5 @@
   background-color: black;
   border-bottom: 1px solid #545454;
   width: calc(100% - (200px * 2));
+  margin-bottom: 40px;
 }

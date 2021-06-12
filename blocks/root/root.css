@@ -6,4 +6,7 @@
   flex-wrap: wrap;
   margin: 45px auto 60px auto;
   align-items: center;
+  color: white;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
 }
