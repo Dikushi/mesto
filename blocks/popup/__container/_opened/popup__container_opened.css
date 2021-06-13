@@ -1,0 +1,7 @@
+.popup__container_opened {
+  display: flex;
+}
+
+.popup {
+  display: fixed;
+}

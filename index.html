@@ -13,7 +13,7 @@
   <div class="root">
 
     <header class="header">
-      <a href="#" targer="_self"><img src="images/logo.svg" alt="Логотип сервиса 'Mesto'"></a>
+      <a class="opacity-element" href="#" targer="_self"><img src="images/logo.svg" alt="Логотип сервиса 'Mesto'"></a>
     </header>
 
     <main class="content">
@@ -24,8 +24,18 @@
           <p class="profile__info-name">Жак-Ив Кусто</p>
           <p class="profile__info-job">Исследователь океана</p>
         </div>
-        <button class="profile__edit-button"></button>
-        <button class="profile__add-button"></button>
+        <button class="profile__edit-button opacity-element"></button>
+        <button class="profile__add-button opacity-element"></button>
+
+        <div class="popup">
+          <div class="popup__container popup__container_opened">
+            <button class="popup__close opacity-element"></button>
+            <p class="popup__name">Редактировать профиль</p>
+            <input class="popup__input-name">
+            <input class="popup__input-job">
+            <button class="popup__save">Сохранить</button>
+          </div>
+        </div>
       </section>
 
       <section class="elements">
@@ -34,42 +44,42 @@
           <img class="elements__item-image" src="images/bangkok.jpg" alt="Бангкок">
           <div class="elements__info">
             <h3 class="elements__info-text">Бангкок</h3>
-            <button class="elements__info-like"></button>
+            <button class="elements__info-like opacity-element"></button>
           </div>
         </div>
         <div class="elements__item">
           <img class="elements__item-image" src="images/croatia.jpg" alt="Хорватия">
           <div class="elements__info">
             <h3 class="elements__info-text">Хорватия</h3>
-            <button class="elements__info-like"></button>
+            <button class="elements__info-like opacity-element"></button>
           </div>
         </div>
         <div class="elements__item">
           <img class="elements__item-image" src="images/dubai.jpg" alt="Дубай">
           <div class="elements__info">
             <h3 class="elements__info-text">Дубай</h3>
-            <button class="elements__info-like"></button>
+            <button class="elements__info-like opacity-element elements__info-like_active"></button>
           </div>
         </div>
         <div class="elements__item">
           <img class="elements__item-image" src="images/parizh.jpg" alt="Париж">
           <div class="elements__info">
             <h3 class="elements__info-text">Париж</h3>
-            <button class="elements__info-like"></button>
+            <button class="elements__info-like opacity-element"></button>
           </div>
         </div>
         <div class="elements__item">
           <img class="elements__item-image" src="images/portugal.jpg" alt="Португалия">
           <div class="elements__info">
             <h3 class="elements__info-text">Португалия</h3>
-            <button class="elements__info-like"></button>
+            <button class="elements__info-like opacity-element"></button>
           </div>
         </div>
         <div class="elements__item">
           <img class="elements__item-image" src="images/rio.jpg" alt="Рио-де-Жанейро">
           <div class="elements__info">
             <h3 class="elements__info-text">Рио-де-Жанейро</h3>
-            <button class="elements__info-like"></button>
+            <button class="elements__info-like opacity-element"></button>
           </div>
         </div>
 
