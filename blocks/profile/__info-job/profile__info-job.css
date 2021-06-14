@@ -9,8 +9,8 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 768px) {
-  .rofile__info-job {
+@media screen and (max-width: 530px) {
+  .profile__info-job {
     font-size: 14px;
     line-height: 17px;
   }

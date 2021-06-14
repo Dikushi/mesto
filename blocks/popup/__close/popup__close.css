@@ -2,6 +2,7 @@
   background-image: url(../../../images/close_icon.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   border: 0;
   padding: 0;
   width: 40px;
@@ -11,22 +12,25 @@
   background-color: rgba(0,0,0,0.0);
   top: -12%;
   left: 100%;
+  transition: opacity 0.5s;
 }
 
-@media screen and (max-width: 880px) {
+.popup__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
   .popup__close {
     width: 28px;
     height: 28px;
-    top: -10%;
+    left: 94%;
+    top: -13%;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 530px) {
   .popup__close {
-    width: 28px;
-    height: 28px;
     left: 90%;
-    top: -15%;
   }
 }
-
