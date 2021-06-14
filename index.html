@@ -9,17 +9,99 @@
 </head>
 
 <body class="page">
+
   <div class="root">
 
-    <header class="header"></header>
+    <header class="header">
+      <a class="opacity-element" href="#" targer="_self"><img src="images/logo.svg" alt="Логотип сервиса 'Mesto'"></a>
+    </header>
 
-    <main class="content"></main>
+    <main class="content">
 
-    <footer class="footer"></footer>
+      <section class="profile">
+        <div class="profile__avatar"></div>
+        <div class="profile__info">
+            <div class="profile__wrapper-edit">
+              <p class="profile__info-name">Жак-Ив Кусто</p>
+              <button class="profile__edit-button opacity-element"></button>
+            </div>
+          <p class="profile__info-job">Исследователь океана</p>
+        </div>
+
+        <button class="profile__add-button opacity-element"></button>
+
+        <div class="popup">
+          <div class="popup__container">
+            <button class="popup__close opacity-element"></button>
+            <p class="popup__name">Редактировать профиль</p>
+            <form class="popup__form">
+              <input type="text" placeholder="Иванов Иван" class="popup__input-name" minlength="2" maxlength="30"
+                required>
+              <input type="text" placeholder="Разработчик" class="popup__input-job" minlength="2" maxlength="50"
+                required>
+              <button type="submit" class="popup__save">Сохранить</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="elements">
+        <h2 class=elements__title>Найди своё "Место"</h2>
+        <div class="elements__item">
+          <img class="elements__item-image" src="images/bangkok.jpg" alt="Бангкок">
+          <div class="elements__info">
+            <h3 class="elements__info-text">Бангкок</h3>
+            <button class="elements__info-like opacity-element"></button>
+          </div>
+        </div>
+        <div class="elements__item">
+          <img class="elements__item-image" src="images/croatia.jpg" alt="Хорватия">
+          <div class="elements__info">
+            <h3 class="elements__info-text">Хорватия</h3>
+            <button class="elements__info-like opacity-element"></button>
+          </div>
+        </div>
+        <div class="elements__item">
+          <img class="elements__item-image" src="images/dubai.jpg" alt="Дубай">
+          <div class="elements__info">
+            <h3 class="elements__info-text">Дубай</h3>
+            <button class="elements__info-like elements__info-like_active opacity-element"></button>
+          </div>
+        </div>
+        <div class="elements__item">
+          <img class="elements__item-image" src="images/parizh.jpg" alt="Париж">
+          <div class="elements__info">
+            <h3 class="elements__info-text">Париж</h3>
+            <button class="elements__info-like opacity-element"></button>
+          </div>
+        </div>
+        <div class="elements__item">
+          <img class="elements__item-image" src="images/portugal.jpg" alt="Португалия">
+          <div class="elements__info">
+            <h3 class="elements__info-text">Португалия</h3>
+            <button class="elements__info-like opacity-element"></button>
+          </div>
+        </div>
+        <div class="elements__item">
+          <img class="elements__item-image" src="images/rio.jpg" alt="Рио-де-Жанейро">
+          <div class="elements__info">
+            <h3 class="elements__info-text">Рио-де-Жанейро</h3>
+            <button class="elements__info-like opacity-element"></button>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">© 2021 Mesto Russia</p>
+    </footer>
 
   </div>
-</body>
 
-</head>
+  <script src="blocks/profile/__edit-button/profile__edit-button.js"></script>
+  <script src="blocks/popup/__close/popup__close.js"></script>
+  <script src="blocks/popup/__save/popup__save.js"></script>
+</body>
 
 </html>

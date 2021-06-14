@@ -1,3 +1,33 @@
 .root {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 45px auto 60px auto;
+  align-items: center;
+  color: white;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  width: calc(1280px - (200px * 2));
+}
 
+@media screen and (max-width: 1024px) {
+  .root {
+  width: calc(100% - (100px * 2));
+}}
+
+@media screen and (max-width: 880px) {
+  .root {
+    width: calc(100% - (50px * 2));
+    margin: 28px auto 36px auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .root {
+    width: calc(100% - (19px * 2));
+  }
 }
