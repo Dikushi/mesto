@@ -13,3 +13,9 @@
 .popup__input-job:focus {
   outline: 0;
 }
+
+@media screen and (max-width: 480px) {
+  .popup__container {
+    margin-bottom: 45px;
+  }
+}

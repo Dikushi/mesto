@@ -8,3 +8,10 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@media screen and (max-width: 768px) {
+  .rofile__info-job {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

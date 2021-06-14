@@ -21,10 +21,13 @@
       <section class="profile">
         <div class="profile__avatar"></div>
         <div class="profile__info">
-          <p class="profile__info-name">Жак-Ив Кусто</p>
+            <div class="profile__wrapper-edit">
+              <p class="profile__info-name">Жак-Ив Кусто</p>
+              <button class="profile__edit-button opacity-element"></button>
+            </div>
           <p class="profile__info-job">Исследователь океана</p>
         </div>
-        <button class="profile__edit-button opacity-element"></button>
+
         <button class="profile__add-button opacity-element"></button>
 
         <div class="popup">
@@ -34,7 +37,7 @@
             <form class="popup__form">
               <input type="text" placeholder="Иванов Иван" class="popup__input-name" minlength="2" maxlength="30"
                 required>
-              <input type="text" placeholder="Разработчик" class="popup__input-job" minlength="2" maxlength="30"
+              <input type="text" placeholder="Разработчик" class="popup__input-job" minlength="2" maxlength="50"
                 required>
               <button type="submit" class="popup__save">Сохранить</button>
             </form>

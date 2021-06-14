@@ -13,4 +13,20 @@
   left: 100%;
 }
 
+@media screen and (max-width: 880px) {
+  .popup__close {
+    width: 28px;
+    height: 28px;
+    top: -10%
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .popup__close {
+    width: 28px;
+    height: 28px;
+    left: 90%;
+    top: -15%;
+  }
+}
 
