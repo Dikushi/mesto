@@ -23,26 +23,11 @@
         <div class="profile__info">
           <div class="profile__wrapper-edit">
             <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
           </div>
           <p class="profile__info-job">Исследователь океана</p>
         </div>
-
-        <button class="profile__add-button" type="button"></button>
-
-        <div class="popup">
-          <div class="popup__container">
-            <button class="popup__close" type="button"></button>
-            <h2 class="popup__name">Редактировать профиль</h2>
-            <form class="popup__form" name="popup__form">
-              <input class="popup__input popup__input_name" type="text" name="popup__input_name"
-                placeholder="Иванов Иван" minlength="2" maxlength="30" required>
-              <input class="popup__input popup__input_job" type="text" name="popup__input_job" placeholder="Разработчик"
-                minlength="2" maxlength="50" required>
-              <button class="popup__save" type="submit">Сохранить</button>
-            </form>
-          </div>
-        </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить фотографию"></button>
       </section>
 
       <section class="elements" aria-label="Найди своё 'Место'">
@@ -50,42 +35,42 @@
           <img class="elements__item-image" src="images/bangkok.jpg" alt="Бангкок">
           <div class="elements__info">
             <h3 class="elements__info-text">Бангкок</h3>
-            <button class="elements__info-like" type="button"></button>
+            <button class="elements__info-like" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__item">
           <img class="elements__item-image" src="images/croatia.jpg" alt="Хорватия">
           <div class="elements__info">
             <h3 class="elements__info-text">Хорватия</h3>
-            <button class="elements__info-like" type="button"></button>
+            <button class="elements__info-like" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__item">
           <img class="elements__item-image" src="images/dubai.jpg" alt="Дубай">
           <div class="elements__info">
             <h3 class="elements__info-text">Дубай</h3>
-            <button class="elements__info-like" type="button"></button>
+            <button class="elements__info-like" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__item">
           <img class="elements__item-image" src="images/parizh.jpg" alt="Париж">
           <div class="elements__info">
             <h3 class="elements__info-text">Париж</h3>
-            <button class="elements__info-like" type="button"></button>
+            <button class="elements__info-like" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__item">
           <img class="elements__item-image" src="images/portugal.jpg" alt="Португалия">
           <div class="elements__info">
             <h3 class="elements__info-text">Португалия</h3>
-            <button class="elements__info-like" type="button"></button>
+            <button class="elements__info-like" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__item">
           <img class="elements__item-image" src="images/rio.jpg" alt="Рио-де-Жанейро">
           <div class="elements__info">
             <h3 class="elements__info-text">Рио-де-Жанейро</h3>
-            <button class="elements__info-like" type="button"></button>
+            <button class="elements__info-like" type="button" aria-label="Нравится"></button>
           </div>
         </article>
 
@@ -93,8 +78,22 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__copyright">© 2021 Mesto Russia</p>
+      <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
+
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+        <h2 class="popup__name">Редактировать профиль</h2>
+        <form class="popup__form" name="form_edit_profile">
+          <input class="popup__input popup__input-name" type="text" name="popup__input_name" placeholder="Иванов Иван"
+            minlength="2" maxlength="30" required>
+          <input class="popup__input popup__input-job" type="text" name="popup__input_job" placeholder="Разработчик"
+            minlength="2" maxlength="50" required>
+          <button class="popup__save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
 
   </div>
 

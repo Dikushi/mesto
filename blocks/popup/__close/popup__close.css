@@ -2,16 +2,15 @@
   background-image: url(../../../images/close_icon.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
-  border: 0;
   padding: 0;
-  width: 40px;
-  height: 40px;
+  border: 0;
+  width: 33px;
+  height: 33px;
   box-sizing: border-box;
   position: absolute;
   background-color: rgba(0,0,0,0.0);
-  top: -12%;
-  left: 100%;
+  top: -11%;
+  left: 101%;
   transition: opacity 0.5s;
 }
 
@@ -22,9 +21,9 @@
 
 @media screen and (max-width: 600px) {
   .popup__close {
-    width: 28px;
-    height: 28px;
-    left: 94%;
+    width: 20px;
+    height: 20px;
+    left: 93%;
     top: -13%;
   }
 }
