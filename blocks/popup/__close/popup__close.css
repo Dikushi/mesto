@@ -1,7 +1,8 @@
 .popup__close {
-  background-image: url(../../../images/close_icon.svg);
+  background: url(../../../images/close_icon.svg);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
+  background-size: contain;
   padding: 0;
   border: 0;
   width: 33px;
@@ -9,8 +10,8 @@
   box-sizing: border-box;
   position: absolute;
   background-color: rgba(0,0,0,0.0);
-  top: -11%;
-  left: 101%;
+  top: -38px;
+  left: 433px;
   transition: opacity 0.5s;
 }
 
@@ -23,13 +24,13 @@
   .popup__close {
     width: 20px;
     height: 20px;
-    left: 93%;
-    top: -13%;
+    left: 402px;
+    top: -42px;
   }
 }
 
 @media screen and (max-width: 530px) {
   .popup__close {
-    left: 90%;
+    left: 254px
   }
 }

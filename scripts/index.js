@@ -1,12 +1,12 @@
-let content = document.querySelector('.root');
-let popupClose = content.querySelector('.popup__close');
-let popUp = content.querySelector('.popup');
-let infoName = content.querySelector('.profile__info-name');
-let infoJob = content.querySelector('.profile__info-job');
-let inputName = content.querySelector('.popup__input-name');
-let inputJob = content.querySelector('.popup__input-job');
-let popupForm = content.querySelector('.popup__form');
-let editButton = content.querySelector('.profile__edit-button');
+const content = document.querySelector('.root');
+const infoName = content.querySelector('.profile__info-name');
+const infoJob = content.querySelector('.profile__info-job');
+const editButton = content.querySelector('.profile__edit-button');
+const popUp = content.querySelector('.popup');
+const popupClose = popUp.querySelector('.popup__close');
+const popupForm = popUp.querySelector('.popup__form');
+const inputName = popupForm.querySelector('.popup__input_type_name');
+const inputJob = popupForm.querySelector('.popup__input_type_job');
 
 // Функция закрытия поп-апа
 function closePopup() {
