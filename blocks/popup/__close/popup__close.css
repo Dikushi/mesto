@@ -10,8 +10,8 @@
   box-sizing: border-box;
   position: absolute;
   background-color: rgba(0,0,0,0.0);
-  top: -11%;
-  left: 101%;
+  top: -40px;
+  right: -40px;
   transition: opacity 0.5s;
 }
 
@@ -24,13 +24,7 @@
   .popup__close {
     width: 20px;
     height: 20px;
-    left: 93%;
-    top: -13%;
-  }
-}
-
-@media screen and (max-width: 530px) {
-  .popup__close {
-    left: 90%;
+    top: -35px;
+    right: 0;
   }
 }
