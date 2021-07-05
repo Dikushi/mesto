@@ -115,11 +115,11 @@ function addCard(nameCard, linkCard) {
   anotherCard.querySelector('.elements__item-image').addEventListener('click', () => setPreviewImage())
 
   function setPreviewImage() {
+    popUpPreviewImage.classList.add('popup_opened');
+
     previewImage.src = linkCard;
     previewImage.alt = nameCard;
     nameImage.textContent = nameCard;
-
-    popUpPreviewImage.classList.add('popup_opened');
 
     popupClosePreviewCard.addEventListener('click', () => popUpPreviewImage.classList.remove('popup_opened'))
   }
