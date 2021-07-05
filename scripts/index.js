@@ -115,13 +115,11 @@ function addCard(nameCard, linkCard) {
   anotherCard.querySelector('.elements__item-image').addEventListener('click', () => setPreviewImage())
 
   function setPreviewImage() {
-    popUpPreviewImage.classList.add('popup_opened');
-
     previewImage.src = linkCard;
     previewImage.alt = nameCard;
     nameImage.textContent = nameCard;
 
-    popupClosePreviewCard.addEventListener('click', () => popUpPreviewImage.classList.remove('popup_opened'))
+    popUpPreviewImage.classList.add('popup_opened');
   }
 
   return anotherCard;
@@ -133,3 +131,4 @@ popupCloseEditProfile.addEventListener('click', closePopUpEditProfile);
 popupCloseAddCard.addEventListener('click', closePopUpAddCard);
 popupFormEditProfile.addEventListener('submit', submitFormEditProfile);
 popupFormAddCard.addEventListener('submit', submitFormAddCard);
+popupClosePreviewCard.addEventListener('click', () => popUpPreviewImage.classList.remove('popup_opened'));
