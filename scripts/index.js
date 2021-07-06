@@ -6,13 +6,13 @@ const addButton = content.querySelector('.profile__add-button');
 const popUpEditProfile = content.querySelector('.popup_type_edit-profile');
 const popUpPreviewImage = content.querySelector('.popup_type_preview-image');
 const popUpAddCard = content.querySelector('.popup_type_add-card');
-const popupCloseEditProfile = popUpEditProfile.querySelector('.popup__close_type_editProfile');
-const popupFormEditProfile = popUpEditProfile.querySelector('.popup__form_type_editProfile');
+const popupCloseEditProfile = popUpEditProfile.querySelector('.popup__close_type_edit-profile');
+const popupFormEditProfile = popUpEditProfile.querySelector('.popup__form_type_edit-profile');
 const previewImage = popUpPreviewImage.querySelector('.popup__image');
 const nameImage = popUpPreviewImage.querySelector('.popup__image-name');
-const popupClosePreviewCard = popUpPreviewImage.querySelector('.popup__close_type_previewCard');
-const popupCloseAddCard = popUpAddCard.querySelector('.popup__close_type_addCard');
-const popupFormAddCard = popUpAddCard.querySelector('.popup__form_type_addCard');
+const popupClosePreviewCard = popUpPreviewImage.querySelector('.popup__close_type_preview-card');
+const popupCloseAddCard = popUpAddCard.querySelector('.popup__close_type_add-card');
+const popupFormAddCard = popUpAddCard.querySelector('.popup__form_type_add-card');
 const inputName = popupFormEditProfile.querySelector('.popup__input_type_name');
 const inputJob = popupFormEditProfile.querySelector('.popup__input_type_job');
 const inputNamePhoto = popupFormAddCard.querySelector('.popup__input_type_photo-name');
@@ -51,17 +51,22 @@ initialCards.forEach((elem) => {
   cardsElements.append(addCard(elem.name, elem.link));
 });
 
+// Общая функция открытия модалки
+function openModal(modal) {
+  modal.classList.add('popup_opened');
+}
+
+// Общая функция закрытия модалки
+function closeModal(modal) {
+  modal.classList.remove('popup_opened');
+}
+
 // Открытие попапа редактирования профиля
 function openPopUpEditProfile() {
   inputName.value = infoName.textContent;
   inputJob.value = infoJob.textContent;
 
-  popUpEditProfile.classList.add('popup_opened');
-};
-
-// Закрытие попапа редактирования профиля
-function closePopUpEditProfile() {
-  popUpEditProfile.classList.remove('popup_opened');
+  openModal(popUpEditProfile);
 };
 
 // Открытие попапа добавления карточки
@@ -69,12 +74,7 @@ function openPopUpAddCard() {
   inputLinkPhoto.value = '';
   inputNamePhoto.value = '';
 
-  popUpAddCard.classList.add('popup_opened');
-};
-
-// Закрытие попапа добавления карточки
-function closePopUpAddCard() {
-  popUpAddCard.classList.remove('popup_opened');
+  openModal(popUpAddCard);
 };
 
 // Функция сохранения введенной информации в попапе редактирования профиля
@@ -84,7 +84,7 @@ function submitFormEditProfile(e) {
   infoName.textContent = inputName.value;
   infoJob.textContent = inputJob.value;
 
-  closePopUpEditProfile();
+  closeModal(popUpEditProfile);
 };
 
 // Функция сохранения новой карточки
@@ -93,7 +93,7 @@ function submitFormAddCard(e) {
 
   cardsElements.prepend(addCard(inputNamePhoto.value, inputLinkPhoto.value));
 
-  closePopUpAddCard();
+  closeModal(popUpAddCard);
 };
 
 // Функция добавления карточки
@@ -119,7 +119,7 @@ function addCard(nameCard, linkCard) {
     previewImage.alt = nameCard;
     nameImage.textContent = nameCard;
 
-    popUpPreviewImage.classList.add('popup_opened');
+    openModal(popUpPreviewImage);
   }
 
   return anotherCard;
@@ -127,8 +127,8 @@ function addCard(nameCard, linkCard) {
 
 editButton.addEventListener('click', openPopUpEditProfile);
 addButton.addEventListener('click', openPopUpAddCard);
-popupCloseEditProfile.addEventListener('click', closePopUpEditProfile);
-popupCloseAddCard.addEventListener('click', closePopUpAddCard);
 popupFormEditProfile.addEventListener('submit', submitFormEditProfile);
 popupFormAddCard.addEventListener('submit', submitFormAddCard);
-popupClosePreviewCard.addEventListener('click', () => popUpPreviewImage.classList.remove('popup_opened'));
+popupCloseEditProfile.addEventListener('click', () => closeModal(popUpEditProfile));
+popupCloseAddCard.addEventListener('click', () => closeModal(popUpAddCard));
+popupClosePreviewCard.addEventListener('click', () => closeModal(popUpPreviewImage));
