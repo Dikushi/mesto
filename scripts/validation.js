@@ -9,7 +9,7 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, ina
 
       toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     });
-  })
+  });
 };
 
 // Проверка инпутов на валидность
@@ -18,18 +18,18 @@ const checkInputValidity = (formElement, inputElement, inputErrorClass, errorCla
     showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
   } else {
     hideInputError(formElement, inputElement, inputErrorClass, errorClass);
-  }
+  };
 };
 
 // Тогл на состояние кнопки
 const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute("disabled", "")
+    buttonElement.setAttribute("disabled", "");
     buttonElement.classList.add(inactiveButtonClass);
   } else {
-    buttonElement.removeAttribute("disabled")
+    buttonElement.removeAttribute("disabled");
     buttonElement.classList.remove(inactiveButtonClass);
-  }
+  };
 };
 
 // Проверка валидны ли инпуты

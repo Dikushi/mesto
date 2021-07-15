@@ -20,7 +20,6 @@ const inputLinkPhoto = popupFormAddCard.querySelector('.popup__input_type_photo-
 const itemTemplate = document.querySelector('#card').content;
 const cardsElements = content.querySelector('.elements');
 
-
 const initialCards = [{
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -51,41 +50,64 @@ const initialCards = [{
 const openModal = (modal) => {
   modal.classList.add('popup_opened');
 
-  modal.querySelector('.popup__save').classList.add('popup__save_disabled')
-  modal.querySelector('.popup__save').setAttribute("disabled", "")
+  if (!modal === popUpPreviewImage) {
+    const buttonElement = modal.querySelector('.popup__save');
+    buttonElement.classList.add('popup__save_disabled');
+    buttonElement.setAttribute("disabled", "");
+  };
+
   document.addEventListener('click', closeModalByOverlay);
   document.addEventListener('keydown', closeModalbyEscape);
-}
+};
 
 // Общая функция закрытия модалки
 const closeModal = (modal) => {
   modal.classList.remove('popup_opened');
 
-  modal.querySelector('.popup__save').classList.remove('popup__save_disabled')
-  modal.querySelector('.popup__save').removeAttribute("disabled")
+  if (!modal === popUpPreviewImage) {
+    const buttonElement = modal.querySelector('.popup__save');
+    buttonElement.classList.remove('popup__save_disabled');
+    buttonElement.removeAttribute("disabled", "");
+  };
+
   document.removeEventListener('click', closeModalByOverlay);
   document.removeEventListener('keydown', closeModalbyEscape);
-}
+};
 
 // Условие для закрытие модального окна [KEY = ESCAPE]
 const closeModalbyEscape = (event) => {
   if (event.key === 'Escape') {
     const activePopUp = document.querySelector('.popup_opened');
     closeModal(activePopUp);
-  }
-}
+  };
+};
 
 // Условие для закрытие модального окна
 const closeModalByOverlay = (event) => {
   if (event.target.classList.contains('popup_opened')) {
     closeModal(event.target);
-  }
-}
+  };
+};
+
+const errorHandler = {
+  errorSpanActive: "popup__input-error_active",
+  errorInputActive: "popup__input_type_error"
+};
+
+// Сброс состояния невалдности данных (убираем отображение)
+const errorReset = (formElement, inputElement, errorHandler) => {
+  const inputSpan = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove(errorHandler.errorInputActive);
+  inputSpan.classList.remove(errorHandler.errorSpanActive);
+};
 
 // Открытие попапа редактирования профиля
 const openPopUpEditProfile = () => {
   inputName.value = infoName.textContent;
   inputJob.value = infoJob.textContent;
+
+  errorReset(popUpEditProfile, inputName, errorHandler);
+  errorReset(popUpEditProfile, inputJob, errorHandler);
 
   openModal(popUpEditProfile);
 };
@@ -93,6 +115,9 @@ const openPopUpEditProfile = () => {
 // Открытие попапа добавления карточки
 const openPopUpAddCard = () => {
   popupFormAddCard.reset();
+
+  errorReset(popupFormAddCard, inputNamePhoto, errorHandler);
+  errorReset(popupFormAddCard, inputLinkPhoto, errorHandler);
 
   openModal(popUpAddCard);
 };
@@ -120,19 +145,20 @@ const submitFormAddCard = (event) => {
 const addCard = (nameCard, linkCard) => {
   const anotherCard = itemTemplate.querySelector('.elements__item').cloneNode(true);
 
-  anotherCard.querySelector('.elements__item-image').src = linkCard;
-  anotherCard.querySelector('.elements__item-image').alt = nameCard;
+  const itemImage = anotherCard.querySelector('.elements__item-image');
+  itemImage.src = linkCard;
+  itemImage.alt = nameCard;
   anotherCard.querySelector('.elements__info-text').textContent = nameCard;
 
   anotherCard.querySelector('.elements__info-like').addEventListener('click', (event) => {
     event.target.classList.toggle('elements__info-like_active');
-  })
+  });
 
   anotherCard.querySelector('.elements__delete-card').addEventListener('click', (event) => {
     event.target.closest('.elements__item').remove();
-  })
+  });
 
-  anotherCard.querySelector('.elements__item-image').addEventListener('click', () => setPreviewImage());
+  itemImage.addEventListener('click', () => setPreviewImage());
 
   const setPreviewImage = () => {
     previewImage.src = linkCard;
@@ -140,7 +166,7 @@ const addCard = (nameCard, linkCard) => {
     nameImage.textContent = nameCard;
 
     openModal(popUpPreviewImage);
-  }
+  };
 
   return anotherCard;
 }
@@ -149,7 +175,6 @@ const addCard = (nameCard, linkCard) => {
 initialCards.forEach((elem) => {
   cardsElements.append(addCard(elem.name, elem.link));
 });
-
 
 // Вешаем слушателей
 editButton.addEventListener('click', openPopUpEditProfile);

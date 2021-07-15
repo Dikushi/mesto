@@ -5,3 +5,7 @@
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.2);
 }
+
+.popup__save_disabled:hover {
+  cursor: default;
+}
