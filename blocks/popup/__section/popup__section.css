@@ -1,0 +1,10 @@
+.popup__section {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.popup__section:last-of-type {
+  margin-bottom: 48px;
+}

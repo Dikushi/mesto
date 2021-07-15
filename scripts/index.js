@@ -20,6 +20,7 @@ const inputLinkPhoto = popupFormAddCard.querySelector('.popup__input_type_photo-
 const itemTemplate = document.querySelector('#card').content;
 const cardsElements = content.querySelector('.elements');
 
+
 const initialCards = [{
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -46,23 +47,43 @@ const initialCards = [{
   }
 ];
 
-// Рендерим изначально добавленные в массив обьекты
-initialCards.forEach((elem) => {
-  cardsElements.append(addCard(elem.name, elem.link));
-});
-
 // Общая функция открытия модалки
-function openModal(modal) {
+const openModal = (modal) => {
   modal.classList.add('popup_opened');
+
+  modal.querySelector('.popup__save').classList.add('popup__save_disabled')
+  modal.querySelector('.popup__save').setAttribute("disabled", "")
+  document.addEventListener('click', closeModalByOverlay);
+  document.addEventListener('keydown', closeModalbyEscape);
 }
 
 // Общая функция закрытия модалки
-function closeModal(modal) {
+const closeModal = (modal) => {
   modal.classList.remove('popup_opened');
+
+  modal.querySelector('.popup__save').classList.remove('popup__save_disabled')
+  modal.querySelector('.popup__save').removeAttribute("disabled")
+  document.removeEventListener('click', closeModalByOverlay);
+  document.removeEventListener('keydown', closeModalbyEscape);
+}
+
+// Условие для закрытие модального окна [KEY = ESCAPE]
+const closeModalbyEscape = (event) => {
+  if (event.key === 'Escape') {
+    const activePopUp = document.querySelector('.popup_opened');
+    closeModal(activePopUp);
+  }
+}
+
+// Условие для закрытие модального окна
+const closeModalByOverlay = (event) => {
+  if (event.target.classList.contains('popup_opened')) {
+    closeModal(event.target);
+  }
 }
 
 // Открытие попапа редактирования профиля
-function openPopUpEditProfile() {
+const openPopUpEditProfile = () => {
   inputName.value = infoName.textContent;
   inputJob.value = infoJob.textContent;
 
@@ -70,16 +91,15 @@ function openPopUpEditProfile() {
 };
 
 // Открытие попапа добавления карточки
-function openPopUpAddCard() {
-  inputLinkPhoto.value = '';
-  inputNamePhoto.value = '';
+const openPopUpAddCard = () => {
+  popupFormAddCard.reset();
 
   openModal(popUpAddCard);
 };
 
 // Функция сохранения введенной информации в попапе редактирования профиля
-function submitFormEditProfile(e) {
-  e.preventDefault();
+const submitFormEditProfile = (event) => {
+  event.preventDefault();
 
   infoName.textContent = inputName.value;
   infoJob.textContent = inputJob.value;
@@ -88,8 +108,8 @@ function submitFormEditProfile(e) {
 };
 
 // Функция сохранения новой карточки
-function submitFormAddCard(e) {
-  e.preventDefault();
+const submitFormAddCard = (event) => {
+  event.preventDefault();
 
   cardsElements.prepend(addCard(inputNamePhoto.value, inputLinkPhoto.value));
 
@@ -97,24 +117,24 @@ function submitFormAddCard(e) {
 };
 
 // Функция добавления карточки
-function addCard(nameCard, linkCard) {
+const addCard = (nameCard, linkCard) => {
   const anotherCard = itemTemplate.querySelector('.elements__item').cloneNode(true);
 
   anotherCard.querySelector('.elements__item-image').src = linkCard;
   anotherCard.querySelector('.elements__item-image').alt = nameCard;
   anotherCard.querySelector('.elements__info-text').textContent = nameCard;
 
-  anotherCard.querySelector('.elements__info-like').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('elements__info-like_active');
+  anotherCard.querySelector('.elements__info-like').addEventListener('click', (event) => {
+    event.target.classList.toggle('elements__info-like_active');
   })
 
-  anotherCard.querySelector('.elements__delete-card').addEventListener('click', (evt) => {
-    evt.target.closest('.elements__item').remove();
+  anotherCard.querySelector('.elements__delete-card').addEventListener('click', (event) => {
+    event.target.closest('.elements__item').remove();
   })
 
-  anotherCard.querySelector('.elements__item-image').addEventListener('click', () => setPreviewImage())
+  anotherCard.querySelector('.elements__item-image').addEventListener('click', () => setPreviewImage());
 
-  function setPreviewImage() {
+  const setPreviewImage = () => {
     previewImage.src = linkCard;
     previewImage.alt = nameCard;
     nameImage.textContent = nameCard;
@@ -125,6 +145,13 @@ function addCard(nameCard, linkCard) {
   return anotherCard;
 }
 
+// Рендерим изначально добавленные в массив обьекты
+initialCards.forEach((elem) => {
+  cardsElements.append(addCard(elem.name, elem.link));
+});
+
+
+// Вешаем слушателей
 editButton.addEventListener('click', openPopUpEditProfile);
 addButton.addEventListener('click', openPopUpAddCard);
 popupFormEditProfile.addEventListener('submit', submitFormEditProfile);

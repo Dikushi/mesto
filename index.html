@@ -48,11 +48,17 @@
       <div class="popup__container">
         <button class="popup__close popup__close_type_edit-profile" type="button" aria-label="Закрыть окно"></button>
         <h2 class="popup__name">Редактировать профиль</h2>
-        <form class="popup__form popup__form_type_edit-profile" name="form_edit_profile">
-          <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя" minlength="2"
-            maxlength="30" required>
-          <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="Вид деятельности"
-            minlength="2" maxlength="50" required>
+        <form class="popup__form popup__form_type_edit-profile" name="form_edit_profile" novalidate>
+          <section class="popup__section">
+            <input class="popup__input popup__input_type_name" id="name-input" type="text" name="name" placeholder="Имя"
+              minlength="2" maxlength="40" required>
+            <span class="popup__input-error name-input-error"></span>
+          </section>
+          <section class="popup__section">
+            <input class="popup__input popup__input_type_job" id="job-input" type="text" name="job" placeholder="О себе"
+              minlength="2" maxlength="200" required>
+            <span class="popup__input-error job-input-error"></span>
+          </section>
           <button class="popup__save" type="submit">Сохранить</button>
         </form>
       </div>
@@ -63,11 +69,17 @@
       <div class="popup__container">
         <button class="popup__close popup__close_type_add-card" type="button" aria-label="Закрыть окно"></button>
         <h2 class="popup__name">Новое место</h2>
-        <form class="popup__form popup__form_type_add-card" name="form_edit_profile">
-          <input class="popup__input popup__input_type_photo-name" type="text" name="photo-name" placeholder="Название"
-            required>
-          <input class="popup__input popup__input_type_photo-link" type="text" name="photo-link"
-            placeholder="Ссылка на картинку" required>
+        <form class="popup__form popup__form_type_add-card" name="form_edit_profile" novalidate>
+          <section class="popup__section">
+            <input class="popup__input popup__input_type_photo-name" type="text" id="photo-name-input" name="photo-name"
+              placeholder="Название" required minlength="2" maxlength="30">
+            <span class="popup__input-error photo-name-input-error"></span>
+          </section>
+          <section class="popup__section">
+            <input class="popup__input popup__input_type_photo-link" id="photo-url-input" type="url" name="photo-link"
+              placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error photo-url-input-error"></span>
+          </section>
           <button class="popup__save" type="submit">Сохранить</button>
         </form>
       </div>
@@ -97,6 +109,7 @@
   </template>
 
   <script src="scripts/index.js"></script>
+  <script src="scripts/validation.js"></script>
 </body>
 
 </html>
