@@ -25,7 +25,7 @@ export default class FormValidator {
   }
 
   // Метод для скрытия ошибки под инпутами
-  _hideValidityError(inputElement) {
+  hideValidityError(inputElement) {
     const errorElement = this._elemForm.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
@@ -37,7 +37,7 @@ export default class FormValidator {
     if (!inputElement.validity.valid) {
       this._showValidityError(inputElement);
     } else {
-      this._hideValidityError(inputElement);
+      this.hideValidityError(inputElement);
     };
   }
 

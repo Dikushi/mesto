@@ -1,25 +1,27 @@
 import {
-  openModal,
   popUpPreviewImage,
   previewImage,
   nameImage
-} from "./index.js";
+} from './constants.js'
 
 export default class Card {
-  constructor(data, templateSelectorById) {
+  constructor(data, templateSelectorById, openModal) {
     this._title = data.name;
     this._link = data.link;
     this._templateSelectorById = templateSelectorById;
+    this._openPreviewImage = openModal;  // Функция открытия попапа, передается в консутрктор при вызове
+    this._element = this._getTemplate();
   }
 
   // Генерация карточки с данными
   generateCard() {
-    this._element = this._getTemplate();
     this._setEvetListeners();
 
-    this._element.querySelector('.elements__item-image').src = this._link;
-    this._element.querySelector('.elements__item-image').alt = this._link;
-    this._element.querySelector('.elements__info-text').textContent = this._title;
+    this._itemImage = this._element.querySelector('.elements__item-image');
+    this._infoText = this._element.querySelector('.elements__info-text')
+    this._itemImage.src = this._link;
+    this._itemImage.alt = this._link;
+    this._infoText.textContent = this._title;
 
     return this._element;
   }
@@ -28,8 +30,7 @@ export default class Card {
   _getTemplate() {
     const cardTemplate = document
       .querySelector(this._templateSelectorById)
-      .content
-      .querySelector('.elements__item')
+      .content.querySelector('.elements__item')
       .cloneNode(true);
 
     return cardTemplate;
@@ -37,7 +38,8 @@ export default class Card {
 
   // Действие для кнопки удалить
   _handleDeleteButton() {
-    this._element.querySelector('.elements__delete-card').closest('.elements__item').remove();
+    this._element.remove();
+    this._element = null;
   }
 
   // Действие для кнопки лайка
@@ -51,7 +53,7 @@ export default class Card {
     previewImage.alt = this._link;
     nameImage.textContent = this._title;
 
-    openModal(popUpPreviewImage);
+    this._openPreviewImage(popUpPreviewImage);
   }
 
   // Метод для навешивания слушателей
