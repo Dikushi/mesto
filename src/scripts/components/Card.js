@@ -1,16 +1,10 @@
-import {
-  popUpPreviewImage,
-  previewImage,
-  nameImage
-} from './constants.js'
-
 export default class Card {
-  constructor(data, templateSelectorById, openModal) {
+  constructor(data, templateSelectorById, handleCardClick) {
     this._title = data.name;
     this._link = data.link;
     this._templateSelectorById = templateSelectorById;
-    this._openPreviewImage = openModal;  // Функция открытия попапа, передается в консутрктор при вызове
     this._element = this._getTemplate();
+    this._handleCardClick = handleCardClick; // Функция для открытия попапа с картинкой при клике на карточку
   }
 
   // Генерация карточки с данными
@@ -49,11 +43,13 @@ export default class Card {
 
   // Действие для превью-изображения
   _handlePreviewImage() {
-    previewImage.src = this._link;
-    previewImage.alt = this._link;
-    nameImage.textContent = this._title;
+    const card = {
+      src: this._link,
+      alt: this._title,
+      title: this._title
+    }
 
-    this._openPreviewImage(popUpPreviewImage);
+    this._handleCardClick(card);
   }
 
   // Метод для навешивания слушателей
