@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="../pages/index.css">
 </head>
 
 <body class="page">
@@ -14,7 +13,7 @@
 
     <!-- Шапка -->
     <header class="header">
-      <a href="#" target="_self"><img class="header__logo" src="../images/logo.svg" alt="Логотип сервиса 'Mesto'"></a>
+      <a href="#" target="_self"><img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип сервиса 'Mesto'"></a>
     </header>
 
     <main class="content">
@@ -89,7 +88,7 @@
     <div class="popup popup_type_preview-image">
       <div class="popup__contain-image">
         <button class="popup__close popup__close_type_preview-card" type="button" aria-label="Закрыть окно"></button>
-        <img class="popup__image" src="../images/avatar.jpg" alt="Превью фотографии">
+        <img class="popup__image" src="<%=require('./images/avatar.jpg')%>" alt="Превью фотографии">
         <h2 class="popup__image-name">Превью фотографии</h2>
       </div>
     </div>
@@ -100,15 +99,13 @@
   <template id="card">
     <article class="elements__item">
       <button class="elements__delete-card" type="button" aria-label="Удалить"></button>
-      <img class="elements__item-image" src="../images/avatar.jpg" alt="Фотография">
+      <img class="elements__item-image" src="<%=require('./images/avatar.jpg')%>" alt="Фотография">
       <div class="elements__info">
         <h3 class="elements__info-text">Фотография</h3>
         <button class="elements__info-like" type="button" aria-label="Нравится"></button>
       </div>
     </article>
   </template>
-
-  <script type="module" src="../pages/index.js"></script>
 </body>
 
 </html>
