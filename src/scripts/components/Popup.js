@@ -6,7 +6,6 @@ export default class Popup {
     this._popupCloseButton = this._popupSelector.querySelector('.popup__close');
     this._classPopupOpen = 'popup_opened';
     this._handleEscClose = this._handleEscClose.bind(this);
-    this._handleBackgroundClickClose = this._handleBackgroundClickClose.bind(this);
     this._ESC_KEY = 'Escape';
   }
 
