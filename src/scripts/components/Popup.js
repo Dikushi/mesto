@@ -1,7 +1,3 @@
-import {
-  ESC_KEY
-} from '../utils/constants.js'
-
 // Класс, который отвечает за открытие и закрытие попапа
 
 export default class Popup {
@@ -11,21 +7,24 @@ export default class Popup {
     this._classPopupOpen = 'popup_opened';
     this._handleEscClose = this._handleEscClose.bind(this);
     this._handleBackgroundClickClose = this._handleBackgroundClickClose.bind(this);
+    this._ESC_KEY = 'Escape';
   }
 
   // Отвечает за открытие попапа
   open() {
     this._popupSelector.classList.add(this._classPopupOpen);
+    document.addEventListener('keydown', this._handleEscClose);
   }
 
   // Отвечает за закрытие попапа
   close() {
     this._popupSelector.classList.remove(this._classPopupOpen);
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   // Отвечает за закрытие попапа клавишей ESC
    _handleEscClose(evt) {
-     if (evt.key === ESC_KEY) {
+     if (evt.key === this._ESC_KEY) {
       this.close();
     }
   }
@@ -40,19 +39,19 @@ export default class Popup {
   /* Добавляет слушатель клика (функция закрытия)
   иконке закрытия попапа и бэкграунду */
   setEventListeners() {
-    document.addEventListener('click', this._handleBackgroundClickClose);
-    document.addEventListener('keydown', this._handleEscClose);
-    this._popupCloseButton.addEventListener('click', () => {
-      this.close()
-    })
+    this._popupSelector.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+        this.close();
+      }
+    });
   }
 
   // Удаляем слушателей
   removeEventListeners() {
-    document.removeEventListener('click', this._handleBackgroundClickClose);
-    document.removeEventListener('keydown', this._handleEscClose);
-    this._popupCloseButton.removeEventListener('click', () => {
-      this.close()
-    })
+    this._popupSelector.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+        this.close();
+      }
+    });
   }
 }
