@@ -29,13 +29,6 @@ export default class Popup {
     }
   }
 
-  //  Отвечает за закрытие попапа нажатием по бэкграунду
-   _handleBackgroundClickClose(evt) {
-      if (evt.target.classList.contains(this._classPopupOpen)) {
-        this.close();
-      }
-    }
-
   /* Добавляет слушатель клика (функция закрытия)
   иконке закрытия попапа и бэкграунду */
   setEventListeners() {
