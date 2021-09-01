@@ -169,12 +169,11 @@ const callBacksForCard = {
 
 // Функция подготовки карточки к отрисовке
 function prepareCard(data) {
-  const card = new Card(
+  return new Card(
     data,
     itemTemplate,
     userInfo.getUserInfo(),
-    callBacksForCard)
-  return card.generateCard();
+    callBacksForCard).generateCard()
 };
 
 // Создаем обьекты для валидации
@@ -228,4 +227,4 @@ request
 request
   .getUserInfo()
   .then(json => userInfo.setUserInfo(json))
-  .catch(err => console.log(err))
+  .catch(err => console.log(err));

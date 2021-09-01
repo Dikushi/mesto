@@ -35,22 +35,26 @@ export default class Card {
     this._itemImage.alt = this._title;
     this._infoText.textContent = this._title;
 
-    this._isLiked();
-    this._isOwner();
+    if (this._isLiked()) {
+      this._infoLike.classList.add(this._classOfActiveLike);
+    };
+    if (this._isOwner()) {
+      this._deleteButton.remove();
+    };
     return this._element;
   }
 
   // Проверка есть ли на карточке уже лайк текущего пользователя
   _isLiked() {
     if (this._likes.some(like => like._id === this._ownerId)) {
-      this._infoLike.classList.add(this._classOfActiveLike);
+      return true;
     }
   }
 
   // Проверка принадлежит ли карточка текущему пользователю
   _isOwner() {
     if (!(this._ownerCardId === this._ownerId)) {
-      this._deleteButton.remove();
+      return true;
     }
   }
 
