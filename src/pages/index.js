@@ -35,7 +35,10 @@ import {
 } from '../scripts/utils/constants.js'
 
 // Обьет для работы с апишкой
-const request = new Api();
+const request = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-27',
+  token: '412f1be1-333d-43fa-9fcf-b27fa8d84808'
+});
 
 // Обьект для управлением данными пользователя
 const userInfo = new UserInfo({
@@ -218,13 +221,14 @@ editAvatarButton.addEventListener('click', () => {
 })
 
 // Отрисовка всех карточек изначальных
-request
-  .getInitialCards()
-  .then(json => sectionWithCard.renderItems(json))
-  .catch(err => console.log(err));
-
-// Подгрузка данных пользователя
-request
-  .getUserInfo()
-  .then(json => userInfo.setUserInfo(json))
-  .catch(err => console.log(err));
+Promise.all([
+  request.getUserInfo(),
+  request.getInitialCards()
+])
+.then(([jsonUserData, jsonInitialCards]) => {
+  userInfo.setUserInfo(jsonUserData);
+  sectionWithCard.renderItems(jsonInitialCards);
+})
+.then((err) => {
+  console.log(err);
+})

@@ -46,16 +46,12 @@ export default class Card {
 
   // Проверка есть ли на карточке уже лайк текущего пользователя
   _isLiked() {
-    if (this._likes.some(like => like._id === this._ownerId)) {
-      return true;
-    }
+    return this._likes.some(like => like._id === this._ownerId)
   }
 
   // Проверка принадлежит ли карточка текущему пользователю
   _isOwner() {
-    if (!(this._ownerCardId === this._ownerId)) {
-      return true;
-    }
+    return this._ownerCardId === this._ownerId
   }
 
   // Метод для забирания темплейта карточки

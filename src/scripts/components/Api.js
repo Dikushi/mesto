@@ -1,7 +1,7 @@
 export default class Api {
-  constructor() {
-    this._baseUrl = 'https://mesto.nomoreparties.co/v1/cohort-27'
-    this._token = '412f1be1-333d-43fa-9fcf-b27fa8d84808'
+  constructor({baseUrl, token}) {
+    this._baseUrl = baseUrl,
+    this._token = token
   }
 
   // Возвращает общую для всех запросов заготовку
