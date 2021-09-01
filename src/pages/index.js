@@ -222,13 +222,13 @@ editAvatarButton.addEventListener('click', () => {
 
 // Отрисовка всех карточек изначальных
 Promise.all([
-  request.getUserInfo(),
-  request.getInitialCards()
-])
-.then(([jsonUserData, jsonInitialCards]) => {
-  userInfo.setUserInfo(jsonUserData);
-  sectionWithCard.renderItems(jsonInitialCards);
-})
-.catch((err) => {
-  console.log(err);
-})
+    request.getUserInfo(),
+    request.getInitialCards()
+  ])
+  .then(([jsonUserData, jsonInitialCards]) => {
+    userInfo.setUserInfo(jsonUserData);
+    sectionWithCard.renderItems(jsonInitialCards);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
