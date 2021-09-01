@@ -229,6 +229,6 @@ Promise.all([
   userInfo.setUserInfo(jsonUserData);
   sectionWithCard.renderItems(jsonInitialCards);
 })
-.then((err) => {
+.catch((err) => {
   console.log(err);
 })

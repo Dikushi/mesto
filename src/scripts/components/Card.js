@@ -12,7 +12,7 @@ export default class Card {
 
     // Коллбэки
     this._openPreviewImage = callbacks.openPreviewImage; // Функция-колбэк для открытия попапа с картинкой при клике на карточку
-    this._handleOpenConfirm = callbacks.handleOpenConfirm; // Функция-колбэк для удаления карточек
+    this._handleOpenConfirm = callbacks.handleOpenConfirm; // Функция-колбэк для открытия/удаления карточек
     this._setLike = callbacks.setLike; // Функция-колбэк для постановки лайка
     this._removeLike = callbacks.removeLike; // Функция-колбэк для убирания лайка
 
@@ -37,10 +37,12 @@ export default class Card {
 
     if (this._isLiked()) {
       this._infoLike.classList.add(this._classOfActiveLike);
-    };
-    if (this._isOwner()) {
+    } else {
+      this._infoLike.classList.remove(this._classOfActiveLike);
+    }
+    if (!this._isOwner()) {
       this._deleteButton.remove();
-    };
+    }
     return this._element;
   }
 
