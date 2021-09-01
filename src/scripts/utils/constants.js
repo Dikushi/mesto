@@ -1,30 +1,3 @@
-// Шесть изначальных карточек
-export const initialCards = [{
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 // Данные для валидации, классы, селекторы
 export const dataValidation = {
   formSelector: '.popup__form',
@@ -39,6 +12,8 @@ export const dataValidation = {
 export const content = document.querySelector('.root');
 export const infoName = content.querySelector('.profile__info-name');
 export const infoJob = content.querySelector('.profile__info-job');
+export const infoAvatar = content.querySelector('.profile__avatar');
+export const editAvatarButton = content.querySelector('.profile__avatar-overlay');
 export const editButton = content.querySelector('.profile__edit-button');
 export const addButton = content.querySelector('.profile__add-button');
 export const popUpEditProfile = content.querySelector('.popup_type_edit-profile');
@@ -55,7 +30,11 @@ export const inputName = popupFormEditProfile.querySelector('.popup__input_type_
 export const inputJob = popupFormEditProfile.querySelector('.popup__input_type_job');
 export const inputNamePhoto = popupFormAddCard.querySelector('.popup__input_type_photo-name');
 export const inputLinkPhoto = popupFormAddCard.querySelector('.popup__input_type_photo-link');
-export const itemTemplate = document.querySelector('#card').content;
+export const itemTemplate = '#card';
 export const cardsElements = content.querySelector('.elements');
+export const popUpUpdateAvatar = content.querySelector('.popup_type_update-avatar');
+export const popupFormUpdateAvatar = popUpUpdateAvatar.querySelector('.popup__form_type_update-avatar');
+export const inputUrlUpdateAvatar = popupFormUpdateAvatar.querySelector('.popup__input_type_avatar-link');
+export const popUpDeleteCard = content.querySelector('.popup_type_delete-card');
 
 export const ESC_KEY = 'Escape';

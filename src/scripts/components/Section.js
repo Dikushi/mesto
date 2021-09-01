@@ -20,11 +20,12 @@ export default class Section {
     });
   }
 
-  // Принимает на вход DOM-элемент и добавляет его в контейнер
+  // Принимает на вход DOM-элемент и добавляет его в контейнер перед первым дочерним
   addItemPrepend(elem) {
     this._containerSelector.prepend(elem);
   }
 
+  // Принимает на вход DOM-элемент и добавляет его в контейнер после последнего дочернего
   addItemAppend(elem) {
     this._containerSelector.append(elem);
   }

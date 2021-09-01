@@ -1,23 +1,57 @@
 export default class Card {
-  constructor(data, templateSelectorById, handleCardClick) {
+  constructor(data, templateSelectorById, currentUser, callbacks) {
+    // Забираем данные из ответа
     this._title = data.name;
     this._link = data.link;
+    this._likes = data.likes;
+    this._cardId = data._id;
+    this._ownerCardId = data.owner._id;
+
+    // Данные текущего пользователя передаю сюда
+    this._ownerId = currentUser.userId;
+
+    // Коллбэки
+    this._openPreviewImage = callbacks.openPreviewImage; // Функция-колбэк для открытия попапа с картинкой при клике на карточку
+    this._handleOpenConfirm = callbacks.handleOpenConfirm; // Функция-колбэк для удаления карточек
+    this._setLike = callbacks.setLike; // Функция-колбэк для постановки лайка
+    this._removeLike = callbacks.removeLike; // Функция-колбэк для убирания лайка
+
     this._templateSelectorById = templateSelectorById;
     this._element = this._getTemplate();
-    this._handleCardClick = handleCardClick; // Функция для открытия попапа с картинкой при клике на карточку
+    this._itemImage = this._element.querySelector('.elements__item-image');
+    this._infoText = this._element.querySelector('.elements__info-text');
+    this._counterLikes = this._element.querySelector('.elements__like-counter');
+    this._infoLike = this._element.querySelector('.elements__info-like');
+    this._deleteButton = this._element.querySelector('.elements__delete-card');
+    this._classOfActiveLike = 'elements__info-like_active';
   }
 
   // Генерация карточки с данными
   generateCard() {
     this._setEvetListeners();
 
-    this._itemImage = this._element.querySelector('.elements__item-image');
-    this._infoText = this._element.querySelector('.elements__info-text')
+    this._counterLikes.textContent = this._likes.length;
     this._itemImage.src = this._link;
-    this._itemImage.alt = this._link;
+    this._itemImage.alt = this._title;
     this._infoText.textContent = this._title;
 
+    this._isLiked();
+    this._isOwner();
     return this._element;
+  }
+
+  // Проверка есть ли на карточке уже лайк текущего пользователя
+  _isLiked() {
+    if (this._likes.some(like => like._id === this._ownerId)) {
+      this._infoLike.classList.add(this._classOfActiveLike);
+    }
+  }
+
+  // Проверка принадлежит ли карточка текущему пользователю
+  _isOwner() {
+    if (!(this._ownerCardId === this._ownerId)) {
+      this._deleteButton.remove();
+    }
   }
 
   // Метод для забирания темплейта карточки
@@ -30,15 +64,22 @@ export default class Card {
     return cardTemplate;
   }
 
-  // Действие для кнопки удалить
-  _handleDeleteButton() {
-    this._element.remove();
-    this._element = null;
+  // Действие для кнопки удалить [открывает попап]
+  _handleClickConfirm() {
+    this._handleOpenConfirm(this._cardId, this._element)
   }
 
   // Действие для кнопки лайка
   _handleLikeButton() {
-    this._element.querySelector('.elements__info-like').classList.toggle('elements__info-like_active');
+    if (!this._infoLike.classList.contains(this._classOfActiveLike)) {
+      this._setLike(this._cardId)
+        .then(json => this._counterLikes.textContent = json.likes.length)
+        .then(this._infoLike.classList.add(this._classOfActiveLike))
+    } else {
+      this._removeLike(this._cardId)
+        .then(json => this._counterLikes.textContent = json.likes.length)
+        .then(this._infoLike.classList.remove(this._classOfActiveLike))
+    }
   }
 
   // Действие для превью-изображения
@@ -49,20 +90,20 @@ export default class Card {
       title: this._title
     }
 
-    this._handleCardClick(card);
+    this._openPreviewImage(card);
   }
 
   // Метод для навешивания слушателей
   _setEvetListeners() {
-    this._element.querySelector('.elements__info-like').addEventListener('click', () => {
+    this._infoLike.addEventListener('click', () => {
       this._handleLikeButton();
     });
 
-    this._element.querySelector('.elements__delete-card').addEventListener('click', () => {
-      this._handleDeleteButton();
+    this._deleteButton.addEventListener('click', () => {
+      this._handleClickConfirm();
     });
 
-    this._element.querySelector('.elements__item-image').addEventListener('click', () => {
+    this._itemImage.addEventListener('click', () => {
       this._handlePreviewImage();
     });
   }

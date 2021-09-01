@@ -4,6 +4,7 @@ export default class Popup {
   constructor(popupSelector) {
     this._popupSelector = popupSelector;
     this._popupCloseButton = this._popupSelector.querySelector('.popup__close');
+    this._button = this._popupSelector.querySelector('.popup__save');
     this._classPopupOpen = 'popup_opened';
     this._handleEscClose = this._handleEscClose.bind(this);
     this._ESC_KEY = 'Escape';
@@ -19,11 +20,12 @@ export default class Popup {
   close() {
     this._popupSelector.classList.remove(this._classPopupOpen);
     document.removeEventListener('keydown', this._handleEscClose);
+
   }
 
   // Отвечает за закрытие попапа клавишей ESC
-   _handleEscClose(evt) {
-     if (evt.key === this._ESC_KEY) {
+  _handleEscClose(evt) {
+    if (evt.key === this._ESC_KEY) {
       this.close();
     }
   }
